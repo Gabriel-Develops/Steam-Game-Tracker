@@ -38,7 +38,7 @@ app.use(passport.session())
 
 app.use(flash())
   
-app.use('/', mainRoutes)
+app.use('/', mainRoutes) //main routes has all main routes
 app.use('/todos', todoRoutes)
  
 app.listen(process.env.PORT, ()=>{

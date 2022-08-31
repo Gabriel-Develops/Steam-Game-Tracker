@@ -9,7 +9,7 @@ const TodoSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
-  userId: {
+  userId: { //storing user's ID with each created 'todo', so each unique user can see the todo's they created on their dashboard
     type: String,
     required: true
   }
