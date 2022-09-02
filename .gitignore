@@ -1,4 +1,8 @@
 node_modules
+<<<<<<< HEAD
 **/config.env
+=======
+config/.env
+>>>>>>> refs/remotes/origin/main
 notes.txt
 .vscode/*
