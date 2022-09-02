@@ -1,6 +1,7 @@
 const User = require('../models/User')
 const steam = require('../config/steamAuth')
 
+
 module.exports = {
     steamLogin: async (req, res) => {
         try {
@@ -15,6 +16,7 @@ module.exports = {
         try {
           const user = await steam.authenticate(req);
             console.log(user)
+            res.redirect('/todos')
           // updates the user with steamId, owned games, etc
             //redirect to dashboard
         } catch (error) {

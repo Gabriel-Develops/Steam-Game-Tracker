@@ -81,7 +81,7 @@ const User = require('../models/User')
       {userName: req.body.userName}
     ]}, (err, existingUser) => {
       if (err) { return next(err) }
-      if (existingUser) {
+      if (existingUser === req.body.email || existingUser === req.body.userName) {
         req.flash('errors', { msg: 'Account with that email address or username already exists.' })
         return res.redirect('../signup')
       }
