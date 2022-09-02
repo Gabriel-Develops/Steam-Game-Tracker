@@ -4,6 +4,7 @@ const steamController = require('../controllers/steam')
 const { ensureAuth } = require('../middleware/auth')
 
 router.get('/', ensureAuth, steamController.steamLogin) 
+router.get('/updateUser', ensureAuth, steamController.updateUser)
 // This is main route for steam/ , first thing it does is run 'ensureAuth' which is
 // imported from middleware/auth.js file getsteam method in todo's controller
 
