@@ -4,10 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Steam Stats!</title>
+
+    <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
+    <header>
+        <h1>Game Tracker App</h1>
+        <h2>Powered by Steam</h2>
+    </header>
+
     <h1>Todos</h1>
     <ul>
     <% todos.forEach( el => { %>
@@ -26,6 +34,11 @@
     </form>
 
     <a href="/logout">Logout</a>
+    <footer>
+        <div>
+            <h4>#100Devs</h4>
+        </div>
+    </footer>
 
     <script src="js/main.js"></script>
 </body>
