@@ -80,10 +80,10 @@ const User = require('../models/User')
       {email: req.body.email},
       {userName: req.body.userName}
     ]}, (err, existingUser) => {
-      if (err) { return next(err) }
+      // if (err) { return next(err) }
       if (existingUser === req.body.email || existingUser === req.body.userName) {
         req.flash('errors', { msg: 'Account with that email address or username already exists.' })
-        return res.redirect('../signup')
+        return res.redirect('/signup')
       }
       user.save((err) => {
         if (err) { return next(err) }
