@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Tracker App!</title>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
 
@@ -13,27 +14,36 @@
 <body>
     <header>
         <h1>Game Tracker App</h1>
-        <h2>Powered by Steam</h2>
+        <h2>Powered by Steam<sup>&reg;</sup></h2>
     </header>
 
-    <h1>Todos</h1>
-    <ul>
-    <% todos.forEach( el => { %>
-            <li class='todoItem' data-id='<%=el._id%>'>
+    <main class="dashboardMain">
+        <div class="dashboardDiv1">
+            <h1>Todos</h1>
+            <ul>
+                <% todos.forEach( el => { %>
+                <li class='todoItem' data-id='<%=el._id%>'>
                 <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
                 <span class='del'> Delete </span>
-            </li>
-    <% }) %>    
-    </ul>
+                </li>
+                <% }) %>    
+            </ul>
+            <h2><%= user.userName %> has <%= left %> things left to do.</h2>
+        </div>
 
-    <h2><%= user.userName %> has <%= left %> things left to do.</h2>
+        <div class="dashboardDiv2">
+            <form action="/todos/createTodo" method='POST'>
+                <input type="text" placeholder="Enter Todo Item" name='todoItem'>
+                <input type="submit" class="inputSubmit">
+            </form>
 
-    <form action="/todos/createTodo" method='POST'>
-        <input type="text" placeholder="Enter Todo Item" name='todoItem'>
-        <input type="submit">
-    </form>
+        </div>
 
-    <a href="/logout">Logout</a>
+        <button class="logoutButton"><a href="/logout">Logout</a> <i class="fa-solid fa-right-from-bracket"></i> </button>
+
+    </main>
+
+    
     <footer>
         <div>
             <h4>#100Devs</h4>
