@@ -16,6 +16,7 @@ module.exports = {
         try {
           const user = await steam.authenticate(req);
             console.log(user)
+            // redirect to todos
             res.redirect('/todos')
           // updates the user with steamId, owned games, etc
             //redirect to dashboard
