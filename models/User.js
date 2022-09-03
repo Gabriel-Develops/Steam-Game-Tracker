@@ -4,7 +4,9 @@ const mongoose = require('mongoose')
 const UserSchema = new mongoose.Schema({
     //Won't be using userName
   //userName: { type: String, unique: true },
-  email: { type: String, unique: true },
+  email: { 
+    type: String, 
+    unique: true },
   password: String,
   steamUserName: String,
   steamID: String,

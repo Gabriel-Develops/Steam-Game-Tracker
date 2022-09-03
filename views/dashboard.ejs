@@ -19,7 +19,7 @@
 
     <main class="dashboardMain">
         <div class="dashboardDiv1">
-            <h1>Welcome, <%= user.steamUserName %>!</h1>
+            <h1>Welcome, <%= user.steamUserName %></h1>
             <!-- <ul>
                 <% //todos.forEach( el => { %>
                 <li class='todoItem' data-id='<%=//el._id%>'>
@@ -27,8 +27,8 @@
                 <span class='del'> Delete </span>
                 </li>
                 <% //}) %>
-            </ul>
-            <h2><%= //user.userName %> has <%= //left %> things left to do.</h2> -->
+            </ul>-->
+            <h2><%= user.steamUserName %> currently owns <%= user.gamesOwned.length %> games!</h2> 
         </div>
 
         <div class="dashboardDiv2">

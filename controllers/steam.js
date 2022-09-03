@@ -54,7 +54,7 @@ module.exports = {
         })
         console.log(games)
         await User.updateOne({"_id": req.user.id}, {$set: {
-          ownedGames: games,
+          gamesOwned: games,
         }}, (err, user) => {
           if (err) {
             console.log(err)
