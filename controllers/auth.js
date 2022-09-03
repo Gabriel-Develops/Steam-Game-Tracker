@@ -57,8 +57,9 @@ const User = require('../models/User')
     })
   }
   
-  exports.postSignup = (req, res, next) => {
+  exports.postSignup = async (req, res, next) => {
     const validationErrors = []
+    console.log('1')
     if (!validator.isEmail(req.body.email)) validationErrors.push({ msg: 'Please enter a valid email address.' })
     if (!validator.isLength(req.body.password, { min: 8 })) validationErrors.push({ msg: 'Password must be at least 8 characters long' })
     if (req.body.password !== req.body.confirmPassword) validationErrors.push({ msg: 'Passwords do not match' })
@@ -67,32 +68,35 @@ const User = require('../models/User')
       req.flash('errors', validationErrors)
       return res.redirect('../signup')
     }
+    console.log('2')
     req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false })
 
     // From user schema in user model
     const user = new User({
-      userName: req.body.userName,
       email: req.body.email,
       password: req.body.password
     })
-  
-    User.findOne({$or: [
-      {email: req.body.email},
-      {userName: req.body.userName}
-    ]}, (err, existingUser) => {
-      // if (err) { return next(err) }
-      if (existingUser === req.body.email || existingUser === req.body.userName) {
-        req.flash('errors', { msg: 'Account with that email address or username already exists.' })
-        return res.redirect('/signup')
-      }
-      user.save((err) => {
-        if (err) { return next(err) }
-        req.logIn(user, (err) => {
-          if (err) {
-            return next(err)
-          }
-          res.redirect('/steam')
+    
+    console.log('3')
+    await User.findOne({email: req.body.email},
+      (err, existingUser) => {
+      if (err) { return next(err) }
+      console.log(existingUser)
+      if (existingUser.email) {
+        req.flash('errors', { msg: 'Account with that email address already exists.' })
+        return res.redirect('../signup')
+      } else{ 
+        user.save((err) => {
+          if (err) { return next(err) }
+          req.logIn(user, (err) => {
+            if (err) {
+              console.log('error when saving')
+              return next(err)
+            }
+            console.log('save complete')
+            res.redirect('/steam')
+          })
         })
-      })
+      }
     })
   }
