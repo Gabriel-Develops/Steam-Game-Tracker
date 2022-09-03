@@ -20,22 +20,17 @@
     <main class="dashboardMain">
         <div class="dashboardDiv1">
             <h1>Welcome, <%= user.steamUserName %></h1>
-            <!-- <ul>
-                <% //todos.forEach( el => { %>
-                <li class='todoItem' data-id='<%=//el._id%>'>
-                <span class='<%= //el.completed === true ? 'completed' : 'not'%>'><%= //el.todo %></span>
-                <span class='del'> Delete </span>
-                </li>
-                <% //}) %>
-            </ul>-->
             <h2><%= user.steamUserName %> currently owns <%= user.gamesOwned.length %> games!</h2> 
         </div>
 
         <div class="dashboardDiv2">
-            <form action="/todos/createTodo" method='POST'>
-                <input type="text" placeholder="Enter Todo Item" name='todoItem'>
-                <input type="submit" class="inputSubmit">
-            </form>
+            <ul>
+                <% user.gamesOwned.forEach( el => { %>
+                    <li class='game' data-id='<%=el%>'>
+                    <a href='/steam/<%= user.steamID %>/<%= el %>'><%= el %></a>
+                    </li>
+                <% }) %>
+            </ul>
 
         </div>
 

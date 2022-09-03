@@ -23,16 +23,11 @@ module.exports = {
       await User.updateOne({"_id": req.user.id}, {$set: {
         steamUserName: `${user.username}`,
         steamID: `${user.steamid}`
-      }}, (err, user) => {
-        if (err) {
-          console.log(err)
-        } else {
-          console.log('Successfully updated user')
-          res.redirect(`/steam/${user.steamID}`)
-        }
-      })
+      }})
       // updates the user with steamID, owned games, etc
-        //redirect to dashboard
+      console.log('Successfully updated user')
+      //redirect to dashboard
+      res.redirect(`/steam/${req.user.steamID}`)
     } catch (error) {
       console.error(error);
     }
@@ -43,31 +38,25 @@ module.exports = {
   getGames: async (req, res) => {
     console.log(req.user)
       try {
-        // we need something like a fetch request here
-        // import fetch from 'node-fetch' ... install this?
-
+        // fetch req in here, can't normally fetch from the server so installed node-fetch pkg and required it in server.js and here in the steam controller
+        // requesting the user's owned games in json format
         const response = await fetch(`http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=${process.env.STEAM_API_KEY}&steamid=${req.user.steamID}&format=json`);
         const ownedGames = await response.json()
-        let games = []
+        const games = []
+        // pushing each appID to the games array
         ownedGames.response.games.forEach(game => {
            games.push(game.appid)
         })
-        console.log(games)
+        // updating the user DB to reflect any updates
         await User.updateOne({"_id": req.user.id}, {$set: {
           gamesOwned: games,
-        }}, (err, user) => {
-          if (err) {
-            console.log(err)
-          } else {
-            console.log('Successfully updated user')
-            res.render('dashboard.ejs', {user: req.user})
-          }
-        })
-    } catch (err){
+        }})
+        console.log('Successfully updated user')
+        res.render('dashboard.ejs', {user: req.user})
+        } catch (err){
       console.log(err)
       res.redirect('/')
     }
-    
   },
 
   //req.params = { steamID: < user steam ID here>, appId: < steam appID here > }
