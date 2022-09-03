@@ -52,6 +52,11 @@ header h2{
     text-shadow: 2px 2px 5px #010000;
 }
 
+header sup{
+    font-size: 1rem;
+
+}
+
 /* MAIN */
 main{
     /* border: 2px solid black; */
@@ -71,7 +76,7 @@ main button{
     padding: .5rem;
 }
 
-.loginButton{
+.loginButton, .logoutButton{
     margin: 1% 0 1% 0;
 }
 .signUpButton{
@@ -105,7 +110,7 @@ footer h4{
 }
 
 
-/* ADDITIONAL STYLES FOR SIGNUP FORM */
+/* ADDITIONAL STYLES FOR SIGNUP FORM PAGE */
 form{
     display: flex;
     flex-direction: column;
@@ -119,7 +124,6 @@ form{
 .signUpDiv{
     margin: 0 25% 0 25%;
 }
-
 
 input{
     background-color: rgb(218, 220, 228);
@@ -141,7 +145,52 @@ input{
 .inputSubmit:hover{
     background-color: rgb(127, 159, 245);
     cursor: pointer;
+}
 
+
+/* ADDITIONAL STYLES FOR DASHBOARD(TODOS) PAGE */
+
+.dashboardMain{
+
+    margin: 1rem 2rem;
+
+}
+
+.dashboardDiv1 h1{
+    color: white;
+    font-size: 3rem;
+    font-style: italic;
+    margin: .25rem 1rem 2rem 1rem;
+    text-shadow: 2px 2px 5px #000000;
+}
+
+.dashboardDiv1 h2{
+    color: white;
+    font-size: 1.6rem;
+    /* font-style: italic; */
+    letter-spacing: .5rem;
+    margin: 1rem 1rem 2rem 1rem;
+    text-shadow: 2px 2px 5px #010000;
+}
+
+.dashboardDiv1 li{
+    color: white;
+    font-size: 1.6rem;
+    margin: 1rem;
+}
+
+.dashboardDiv1 .del{
+    font-weight: bold;
+    margin-left: 25px;
+}
+
+.dashboardDiv1 .del:hover{
+    background-color: rgb(127, 159, 245);
+    cursor: pointer;
+}
+
+.dashboardDiv2{
+    margin: 0 25% 0 25%;
 }
 
 
@@ -169,6 +218,7 @@ input{
 /* h1{
     color: red;
 }
+*/
 
 .completed{
     text-decoration: line-through;
@@ -176,4 +226,4 @@ input{
 }
 .not{
     text-decoration: underline;
-} */
+} 
