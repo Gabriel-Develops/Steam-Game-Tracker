@@ -4,19 +4,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+    <title>Game Tracker App!</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+
 <body>
+    <header>
+        <h1>Game Tracker App</h1>
+        <h2>Powered by Steam</h2>
+    </header>
     <% if (locals.messages.errors) { %>
         <% messages.errors.forEach( el => { %>
             <div class="alert alert-danger"><%= el.msg %></div>
         <% }) %>    
     <% } %>
-    <form action="/signup" method="POST">
-        <input type="email" name="email" placeholder="Email">
-        <input type="password" name="password" placeholder="Password">
-        <input type="password" name="confirmPassword" placeholder="Confirm Password">
-        <input type="submit">
-    </form>
+
+
+  <main class="signUpMain">
+    <div class="signUpDiv">
+        <form action="/signup" method="POST">
+            <input type="email" name="email" placeholder="Email">
+            <input type="password" name="password" placeholder="Password">
+            <input type="password" name="confirmPassword" placeholder="Confirm Password">
+            <input type="submit" class="inputSubmit">
+        </form>
+    </div>
+  </main>
+
+    <footer>
+        <div>
+            <h4>#100Devs</h4>
+        </div>
+    </footer>
 </body>
 </html>
