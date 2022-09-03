@@ -4,8 +4,9 @@ const User = require('../models/User')
 
 // Question: Why does it say 'exports' and not 'module.exports'?
  exports.getLogin = (req, res) => {
+    console.log(req.params)
     if (req.user) {
-      return res.redirect('/todos')
+      return res.redirect(`/steam/${req.user.steamID}`)
     }
     res.render('login', {
       title: 'Login'
@@ -32,7 +33,7 @@ const User = require('../models/User')
       req.logIn(user, (err) => {
         if (err) { return next(err) }
         req.flash('success', { msg: 'Success! You are logged in.' })
-        res.redirect(req.session.returnTo || '/todos')
+        res.redirect(req.session.returnTo || `/steam/${user.steamID}`)
       })
     })(req, res, next)
   }
@@ -50,7 +51,7 @@ const User = require('../models/User')
   
   exports.getSignup = (req, res) => {
     if (req.user) {
-      return res.redirect('/todos')
+      return res.redirect(`/steam/${req.user.steamID}`)
     }
     res.render('signup', {
       title: 'Create Account'
@@ -59,7 +60,6 @@ const User = require('../models/User')
   
   exports.postSignup = async (req, res, next) => {
     const validationErrors = []
-    console.log('1')
     if (!validator.isEmail(req.body.email)) validationErrors.push({ msg: 'Please enter a valid email address.' })
     if (!validator.isLength(req.body.password, { min: 8 })) validationErrors.push({ msg: 'Password must be at least 8 characters long' })
     if (req.body.password !== req.body.confirmPassword) validationErrors.push({ msg: 'Passwords do not match' })
@@ -68,7 +68,7 @@ const User = require('../models/User')
       req.flash('errors', validationErrors)
       return res.redirect('../signup')
     }
-    console.log('2')
+    
     req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false })
 
     // From user schema in user model
@@ -77,12 +77,11 @@ const User = require('../models/User')
       password: req.body.password
     })
     
-    console.log('3')
     await User.findOne({email: req.body.email},
       (err, existingUser) => {
       if (err) { return next(err) }
-      console.log(existingUser)
-      if (existingUser.email) {
+      // checks to see if the findOne method returned an existingUser from the user collection
+      if (existingUser) {
         req.flash('errors', { msg: 'Account with that email address already exists.' })
         return res.redirect('../signup')
       } else{ 
@@ -94,6 +93,8 @@ const User = require('../models/User')
               return next(err)
             }
             console.log('save complete')
+            //redirecting to steam for login
+            //so we can get that sweet, sweet steamid
             res.redirect('/steam')
           })
         })

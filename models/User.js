@@ -7,7 +7,10 @@ const UserSchema = new mongoose.Schema({
   email: { type: String, unique: true },
   password: String,
   steamUserName: String,
-  steamID: String
+  steamID: String,
+  // could createe a schema for games and insert into the array here as [gamesSchema]
+  // for now it will be an array of appids
+  gamesOwned: [String]
 })
 
 
