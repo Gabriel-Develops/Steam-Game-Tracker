@@ -15,6 +15,7 @@
         <h1>Game Tracker App</h1>
         <h2>Powered by Steam</h2>
     </header>
+
     <% if (locals.messages.errors) { %>
         <% messages.errors.forEach( el => { %>
             <div class="alert alert-danger"><%= el.msg %></div>
@@ -25,12 +26,18 @@
             <div class="alert alert-danger"><%= el.msg %></div>
         <% }) %>    
     <% } %>
-    <form action="/login" method="POST">
-        <input type="email" name="email" placeholder="Email">
-        <input type="password" name="password" placeholder="Password">
-        <input type="submit">
-    </form>
-    
+
+    <main class="signUpMain">
+        <div class="signUpDiv">
+            <form action="/login" method="POST">
+                <input type="email" name="email" placeholder="Email">
+                <input type="password" name="password" placeholder="Password">
+                <input type="submit" class="inputSubmit">
+            </form>
+        </div>
+    </main>
+ 
+
     <footer>
         <div>
             <h4>#100Devs</h4>
