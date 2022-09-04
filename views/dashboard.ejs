@@ -36,7 +36,7 @@
                 %>
             <% const imgURL = `https://media.steampowered.com/steamcommunity/public/images/apps/${game.appid}/${game.img_icon_url}.jpg`%>
             <li class='game' data-id='<%= game.appid %>'>
-                <a class='game-page-link' href='/steam/<%= user.steamID %>/<%= game.appid %>'>
+                <a class='game-page-link' href='/todos/<%= user.steamID %>/<%= game.appid %>'>
                     <%=game.name%>
                 </a>
                 <span class="hours-played">

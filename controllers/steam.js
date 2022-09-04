@@ -83,9 +83,9 @@ module.exports = {
   },
 
   //req.params = { steamID: < user steam ID here>, appId: < steam appID here > }
-  getGameData: (req,res) => {
+  getGameData: async (req,res) => {
     console.log(req.params)
-    res.render('dashboard.ejs')
+    console.log(req.params.appID)
   }
 }
 
@@ -93,3 +93,11 @@ module.exports = {
 // user logs in
 // redirected to a place of our choosing
 // passing in the user's details - steam id
+
+
+    // NEWS Code in progress, needs to be moved client side
+    // const newsForAppResponse = await fetch(`http://api.steampowered.com/ISteamNews/GetNewsForApp/v0002/?appid=${req.params.appID}&count=3&maxlength=300&format=json`)
+    // const newsForApp = await newsForAppResponse.json()
+    // for (news of newsForApp.appnews.newsitems) {
+    //   console.log(news)
+    // }
