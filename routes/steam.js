@@ -7,9 +7,9 @@ router.get('/', ensureAuth, steamController.steamLogin)
 router.get('/updateUser', ensureAuth, steamController.updateUser)
 router.get('/:steamID', ensureAuth, steamController.getGames)
 // pulls up the dashboard and passes in the user's steamId so the dashboard can be rendered
-router.get('/:steamID/:appID', ensureAuth, steamController.getGameData)
+//router.get('/:steamID/:appID', ensureAuth, steamController.getGameData)
 // pulls up specific game information and passes in the user and app id to render it
-// -- game todos will also be incorporated into this route
+// -- game todos will also be connected to this route
 
 
 // router.put('/updateUser', ensureAuth, steamController.updateUser)

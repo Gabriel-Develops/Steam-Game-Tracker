@@ -1,5 +1,7 @@
 const express = require('express')
 const app = express()
+const path = require('path')
+const expressLayouts = require('express-ejs-layouts')
 const mongoose = require('mongoose')
 const passport = require('passport')
 const steamAuth = require('node-steam-openid')
@@ -21,7 +23,12 @@ require('./config/steamAuth')
 connectDB()
 
 app.set('view engine', 'ejs')
+app.set('views', __dirname + '/views')
+app.set('layout', 'layouts/main')
+app.use(expressLayouts)
 app.use(express.static('public'))
+app.use('*/js',express.static('public/js'));
+app.use('*/css',express.static('public/css'));
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(logger('dev'))

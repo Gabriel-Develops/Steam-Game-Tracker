@@ -43,8 +43,9 @@ module.exports = {
         const response = await fetch(`http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=${process.env.STEAM_API_KEY}&steamid=${req.user.steamID}&format=json`);
         const ownedGames = await response.json()
         const games = []
-        // pushing each appID to the games array
-        ownedGames.response.games.forEach(game => {
+        // if there are games to add, pushing each appID to the games array
+        if(ownedGames.response.games > req.user.gamesOwned){
+          ownedGames.response.games.forEach(game => {
            games.push(game.appid)
         })
         // updating the user DB to reflect any updates
@@ -52,18 +53,19 @@ module.exports = {
           gamesOwned: games,
         }})
         console.log('Successfully updated user')
+        }
         res.render('dashboard.ejs', {user: req.user})
         } catch (err){
-      console.log(err)
-      res.redirect('/')
-    }
+          console.log(err)
+          res.redirect('/')
+        }
   },
 
   //req.params = { steamID: < user steam ID here>, appId: < steam appID here > }
-  getGameData: (req,res) => {
-    console.log(req.params)
-    res.render('todos.ejs')
-  }
+  // getGameData: (req,res) => {
+  //   console.log(req.params)
+  //   res.render('todos.ejs')
+  // }
 }
 
 // sends user to a steam page to login
