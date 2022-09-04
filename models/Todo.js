@@ -14,6 +14,14 @@ const TodoSchema = new mongoose.Schema({
   userId: {
     type: String,
     required: true
+  },
+  steamId: {
+    type: String,
+    required: true
+  },
+  appId: {
+    type: String,
+    required: true
   }
 })
 

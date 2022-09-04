@@ -2,21 +2,34 @@ const Todo = require('../models/Todo')
 
 module.exports = {
     getTodos: async (req,res)=>{
-        console.log(req.user)
+        console.log('es',req.params)
         try{
             // Finding the todo's for the specific user ID
-            const todoItems = await Todo.find({userId:req.user.id})
-            const itemsLeft = await Todo.countDocuments({userId:req.user.id,completed: false})
-            res.render('todos.ejs', {todos: todoItems, left: itemsLeft, user: req.user})
+            const todoItems = await Todo.find({userId:req.user.id, appId: req.params.appID})
+            const itemsLeft = await Todo.countDocuments({userId:req.user.id,completed: false, appId: req.params.appID})
+            console.log('todoItems', todoItems, itemsLeft)
+            res.render('todos.ejs', {
+                todos: todoItems, 
+                left: itemsLeft, 
+                user: req.user, 
+                appID: req.params.appID
+            })
         }catch(err){
             console.log(err)
         }
     },
     createTodo: async (req, res)=>{
+        console.log(req.params)
         try{
-            await Todo.create({todo: req.body.todoItem, completed: false, userId: req.user.id})
+            await Todo.create({
+                todo: req.body.todoItem, 
+                completed: false, 
+                userId: req.user.id,
+                steamId: req.params.steamID,
+                appId: req.params.appID
+            })
             console.log('Todo has been added!')
-            res.redirect('/todos')
+            res.redirect(`/todos/${req.user.steamID}/${req.params.appID}`)
         }catch(err){
             console.log(err)
         }

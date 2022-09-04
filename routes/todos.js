@@ -16,7 +16,7 @@ router.get('/:steamID/:appID', ensureAuth, todosController.getTodos)
 //  steamController.getAchievements
 //  steamController.getStats
 
-router.post('/createTodo', todosController.createTodo)
+router.post('/createTodo/:steamID/:appID', todosController.createTodo)
 
 router.put('/markComplete', todosController.markComplete)
 

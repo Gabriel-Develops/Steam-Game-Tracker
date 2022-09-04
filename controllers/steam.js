@@ -38,7 +38,7 @@ async function getUserGameAchievements(appid,steamid) {
     //fetch game user stats from Steam Web API, which includes most stats
   const userStatsForGameResponse = await fetch(`https://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v2/?key=${process.env.STEAM_API_KEY}&steamid=${steamid}&appid=${appid}`)
   const userStatsForGame = await userStatsForGameResponse.json();
-    console.log(userStatsForGame)
+    // console.log(userStatsForGame)
     if(userStatsForGame.playerstats&&userStatsForGame.playerstats.achievements){
     return userStatsForGame.playerstats.achievements.length
     }
