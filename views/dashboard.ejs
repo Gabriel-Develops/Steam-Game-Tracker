@@ -41,7 +41,7 @@
                     <span class="hours-played">
                         <%= (game.playtime_forever / 60).toFixed(1) %> hours played
                     </span>
-                    <a href='/steam/<%= user.steamID %>/<%= game %>'>
+                    <a href='/steam/<%= user.steamID %>/<%= game.appid %>'>
                         <%#
                         Some game icon hashes from Steam seem to be missing. ex: 3 were missing from 413 results.
                         In this case, we can just skip trying to attach those icons.
