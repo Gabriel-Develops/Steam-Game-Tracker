@@ -11,7 +11,9 @@ const GameSchema = new mongoose.Schema({
     playtime_windows_forever: Number,
     playtime_mac_forever: Number,
     playtime_linux_forever: Number,
-    rtime_last_played: Number
+    rtime_last_played: Number,
+    total_achievements: Number,
+    achievements_unlocked: Number
 })
 
 
