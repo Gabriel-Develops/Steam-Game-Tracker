@@ -3,6 +3,31 @@ const steam = require('../config/steamAuth')
 const fetch = require('node-fetch')
 require('dotenv').config({path: './config/.env'})
 
+
+async function getSortedGames(req) {
+  // fetch req in here, can't normally fetch from the server so installed node-fetch pkg and required it in server.js and here in the steam controller
+  // requesting the user's owned games in json format
+  // Retrieve the user's owned games using the WebAPI Key provided in .env, along with the user's steam ID, and include extended info for each game.
+  // TODO: Automate setting up the WebAPI Key per user and storing in User's document in db, so that a user doesn't need to make their profile public to make use of these features.
+  const ownedGamesResponse = await fetch(`https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=${process.env.STEAM_API_KEY}&steamid=${req.user.steamID}&format=json&include_appinfo=true`)
+  const ownedGames = await ownedGamesResponse.json()
+  // Presort games by total time played in descending order
+  return ownedGames.response.games.sort((a, b) => {
+    return b.playtime_forever - a.playtime_forever
+  })
+}
+
+async function getPlayerPublicStatus(req) {
+  // Check if the user's profile is public
+  const playerPublicStatusResponse = await fetch(`https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${process.env.STEAM_API_KEY}&steamids=${req.user.steamID}`)
+  const playerPublicStatus = await playerPublicStatusResponse.json()
+  // For an explanation, check the Steam WebAPI docs under:
+  // GetPlayerSummaries (v0002) > Return Value > Public Data > communityvisibilitystate
+  // https://developer.valvesoftware.com/wiki/Steam_Web_API
+  return playerPublicStatus.response.players[0].communityvisibilitystate === 3
+}
+
+
 module.exports = {
   steamLogin: async (req, res) => {
     console.log(req.params)
@@ -36,25 +61,20 @@ module.exports = {
   //req.params = { steamID: < user steam ID here> }
   //also having ensureAuth passes in the current user
   getGames: async (req, res) => {
-    console.log("req.user from steamController.getGames()", req.user)
     try {
-      // fetch req in here, can't normally fetch from the server so installed node-fetch pkg and required it in server.js and here in the steam controller
-      // requesting the user's owned games in json format
-      // Retrieve the user's owned games using the WebAPI Key provided in .env, along with the user's steam ID, and include extended info for each game.
-      // TODO: Automate setting up the WebAPI Key per user and storing in User's document in db, so that a user doesn't need to make their profile public to make use of these features.
-      const response = await fetch(`https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=${process.env.STEAM_API_KEY}&steamid=${req.user.steamID}&format=json&include_appinfo=true`)
-      const ownedGames = await response.json()
-      // Presort games by total time played in descending order
-      const ownedGamesSorted = ownedGames.response.games.sort((a, b) => {
-        return b.playtime_forever - a.playtime_forever
-      })
-
+      const ownedGamesSorted = await getSortedGames(req)
+      const playerIsPublic = await getPlayerPublicStatus(req)
+      console.log("🐟 Player is public?", playerIsPublic)
       // updating the user DB to reflect any updates
       await User.updateOne({"_id": req.user.id}, {$set: {
         ownedGames: ownedGamesSorted,
       }})
-      console.log('Successfully updated user')
-      res.render('dashboard.ejs', {user: req.user, games: ownedGamesSorted})
+
+      res.render('dashboard.ejs', {
+        user: req.user,
+        games: ownedGamesSorted,
+        playerIsPublic
+      })
     }
     catch (err) {
       console.log(err)

@@ -15,17 +15,38 @@
 </head>
 <body>
     <section class="dashboard-layout">
+        <section class="error-section hidden">
+            <%#
+            Various error messages can be displayed here. For example, if the Steam API key is missing,
+            or if the user's steam profile isn't set to public in order to let them know how to fix potentially
+            empty game results despite logging in (until we think of a better way to go about this).
+            %>
+            <% if (!process.env.STEAM_API_KEY) { %>
+                <section class="error">
+                    <h3>Steam API Key is missing!</h3>
+                    <p>Insert <a href="https://steamcommunity.com/dev/apikey" target="_blank">here</a> and add it to your .env file.</p>
+                </section>
+            <% } %>
+
+            <% if (!playerIsPublic) { %>
+                <section class="error">
+                    <h3>Your Steam profile or game details aren't set to public, so we might not be able to see your games!</h3>
+                    <p>Make sure your profile and game details are public <a href="https://steamcommunity.com/my/edit/settings" target="_blank">here</a> and refresh.</p>
+                </section>
+            <% } %>
+        </section>
+
         <nav class="dashboard-nav">
             <div class="dashboard-headers">
                 <h1>Welcome, <%= user.steamUserName %></h1>
-                <h2><%= user.steamUserName %> currently owns <%= games.length %> games!</h2>
+                <h2><%= user.steamUserName %> currently owns <span class="game-count"><%= games.length %></span> games!</h2>
             </div>
             <% if (user) { %>
                 <a href="/logout" class="logout-btn">Logout</a>
             <% } %>
         </nav>
 
-        <% console.log("Game element from dashboard", games[0]) %>
+        <% console.info("🐟 Example game element response from dashboard", games[0]) %>
 
         <ul class="games-list">
             <% games.forEach( game => { %>
