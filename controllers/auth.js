@@ -9,7 +9,8 @@ const User = require('../models/User')
       return res.redirect(`/steam/${req.user.steamID}`)
     }
     res.render('login', {
-      title: 'Login'
+      title: 'Login',
+      user: req.user
     })
   }
   
