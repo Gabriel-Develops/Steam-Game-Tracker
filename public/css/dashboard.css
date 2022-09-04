@@ -59,7 +59,7 @@ li {
     transition: all 0.2s ease-in-out;
 }
 li:hover {
-    border: 0.4rem solid #33cb9d;
+    border: 0.4rem solid goldenrod;
     transform: translateY(-0.1rem);
 }
 
@@ -121,8 +121,8 @@ nav {
     transition: all 0.2s ease-in-out;
 }
 .logout-btn:hover {
-    background-color: #33cb9d;
-    border: 0.2rem solid #33cb9d;
+    background-color: goldenrod;
+    border: 0.2rem solid goldenrod;
     color: #222222;
 }
 .error-section {
