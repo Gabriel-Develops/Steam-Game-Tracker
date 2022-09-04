@@ -43,6 +43,7 @@ ul {
 
 /* A square card showing information about a steam game */
 li {
+    user-select: none;
     background-color:#202020;
     border: 0.4rem solid #323232;
     border-radius: 1rem;
@@ -59,14 +60,50 @@ li:hover {
     border: 0.4rem solid #33cb9d;
 }
 
-.steam-page-link {
-    text-decoration: dotted;
-    color: #59e79d;
-    padding: 0.5rem 0;
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0;
+}
 
+.steam-page-link {
+    text-decoration-style: dotted;
+    color: #59e79d;
+    padding: 1rem 0;
+    transition: all 0.2s ease-in-out;
+    border-radius: 0.5rem;
+}
+.steam-page-link:hover {
+    color: #cb5870;
+    background: #141414;
+}
+.hours-played {
+    padding: 0.5rem 0;
 }
 /* Align icon to top right of parent element*/
 .game-icon {
     align-self: flex-end;
     padding: 0.5rem 0;
+}
+
+.logout-btn {
+    background-color: #222222;
+    border: 0.2rem solid #323232;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem #2a2a2a;
+    color: #cccccc;
+    font-size: 1rem;
+    text-decoration: none;
+    font-weight: 300;
+    padding: 1rem;
+    margin: 1rem;
+    transition: all 0.2s ease-in-out;
+}
+.logout-btn:hover {
+    background-color: #33cb9d;
+    border: 0.2rem solid #33cb9d;
+    color: #222222;
 }
