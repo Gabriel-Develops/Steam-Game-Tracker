@@ -13,7 +13,7 @@ async function getSortedGames(req) {
   const ownedGames = await ownedGamesResponse.json()
   // Presort games by total time played in descending order
   return ownedGames.response.games.sort((a, b) => {
-    return b.playtime_forever - a.playtime_forever
+    return b.rtime_last_played - a.rtime_last_played
   })
 }
 
