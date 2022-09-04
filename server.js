@@ -18,8 +18,6 @@ require('dotenv').config({path: './config/.env'})
 require('./config/passport')(passport)
 require('./config/steamAuth')
 
-connectDB()
-
 app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
 app.set('layout', 'layouts/main')
@@ -30,9 +28,6 @@ app.use('*/css',express.static('public/css'));
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(logger('dev'))
-// Sessions
-
-
 
 const todoRoutes = require('./routes/todos')
 const steamRoutes = require('./routes/steam')

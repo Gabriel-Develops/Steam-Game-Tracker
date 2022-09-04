@@ -6,7 +6,6 @@ body {
     padding: 0;
 }
 header {
-    background-color: #222222;
     padding: 3rem;
     color: #cccccc;
     font-size: 20px;
@@ -22,7 +21,6 @@ header {
 }
 h1 {
     user-select: none;
-    font-size: 2rem;
     font-weight: 300;
     padding: 1rem;
 }
@@ -72,8 +70,21 @@ nav {
     padding: 0;
 }
 
-.steam-page-link {
+.game-page-link {
     text-decoration-style: dotted;
+    color: goldenrod;
+    padding: 1rem 0;
+    transition: all 0.2s ease-in-out;
+    border-radius: 0.5rem;
+}
+.game-page-link:hover {
+    color: #cb5870;
+    background: #141414;
+    transform: translateY(0.1rem);
+}
+
+.steam-page-link {
+    font-size: 1.5rem;
     color: goldenrod;
     padding: 1rem 0;
     transition: all 0.2s ease-in-out;
@@ -100,7 +111,7 @@ nav {
 }
 /* Align icon to top right of parent element*/
 .game-icon {
-    align-self: flex-end;
+    align-self: center;
     padding: 0.5rem 0;
 }
 
