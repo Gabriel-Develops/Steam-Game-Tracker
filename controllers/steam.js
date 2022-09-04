@@ -17,6 +17,41 @@ async function getSortedGames(req) {
   })
 }
 
+
+async function getGameAchievements(appid) {
+    //fetch game Schema from Steam Web API, which includes most stats
+  const entireGameStatsResponse = await fetch(`https://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v2/?key=${process.env.STEAM_API_KEY}&appid=${appid}`)
+    const entireGameStats = await entireGameStatsResponse.json()
+    if(entireGameStats.game.availableGameStats&&entireGameStats.game.availableGameStats.achievements){
+    return entireGameStats.game.availableGameStats.achievements.length
+    }
+    else{
+        return 0
+    }
+    //from response json object, look at the achievement array and count the elements
+    // For an explanation, check the Steam WebAPI docs under:
+    // ISteamUserStats Interface > GetSchemaForGame 
+    //https://partner.steamgames.com/doc/webapi/ISteamUserStats
+}
+
+async function getUserGameAchievements(appid,steamid) {
+    //fetch game user stats from Steam Web API, which includes most stats
+  const userStatsForGameResponse = await fetch(`https://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v2/?key=${process.env.STEAM_API_KEY}&steamid=${steamid}&appid=${appid}`)
+  const userStatsForGame = await userStatsForGameResponse.json();
+    console.log(userStatsForGame)
+    if(userStatsForGame.playerstats&&userStatsForGame.playerstats.achievements){
+    return userStatsForGame.playerstats.achievements.length
+    }
+    else{
+        return 0
+    }
+    //return userStatsForGame.game.availableGameStats.achievements.length
+    //from response json object, look at the achievement array and count the elements
+    // For an explanation, check the Steam WebAPI docs under:
+    // ISteamUserStats Interface > GetUserStatsForGame 
+    //https://partner.steamgames.com/doc/webapi/ISteamUserStats
+}
+
 async function getPlayerPublicStatus(req) {
   // Check if the user's profile is public
   const playerPublicStatusResponse = await fetch(`https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${process.env.STEAM_API_KEY}&steamids=${req.user.steamID}`)
@@ -62,7 +97,12 @@ module.exports = {
   //also having ensureAuth passes in the current user
   getGames: async (req, res) => {
     try {
-      const ownedGamesSorted = await getSortedGames(req)
+      let ownedGamesSorted = await getSortedGames(req)
+//      ownedGamesSorted.map((game) => {
+//                game.total_achievements= getGameAchievements(game.appid)
+//                game.user_achievements = getUserGameAchievements(game.appid,req.params.steamID)
+//                return game
+//            })
       const playerIsPublic = await getPlayerPublicStatus(req)
       console.log("🐟 Player is public?", playerIsPublic)
       // updating the user DB to reflect any updates
@@ -83,9 +123,9 @@ module.exports = {
   },
 
   //req.params = { steamID: < user steam ID here>, appId: < steam appID here > }
-  getGameData: async (req,res) => {
+  getGameData: (req,res) => {
     console.log(req.params)
-    console.log(req.params.appID)
+    res.render('dashboard.ejs')
   }
 }
 
@@ -93,11 +133,3 @@ module.exports = {
 // user logs in
 // redirected to a place of our choosing
 // passing in the user's details - steam id
-
-
-    // NEWS Code in progress, needs to be moved client side
-    // const newsForAppResponse = await fetch(`http://api.steampowered.com/ISteamNews/GetNewsForApp/v0002/?appid=${req.params.appID}&count=3&maxlength=300&format=json`)
-    // const newsForApp = await newsForAppResponse.json()
-    // for (news of newsForApp.appnews.newsitems) {
-    //   console.log(news)
-    // }
