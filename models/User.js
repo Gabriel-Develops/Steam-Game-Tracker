@@ -14,17 +14,6 @@ const GameSchema = new mongoose.Schema({
     rtime_last_played: Number
 })
 
-// Embedded document for game info retrieved from Steam API
-const RecentGameSchema = new mongoose.Schema({
-    appid: Number,
-    name: String,
-    playtime_2weeks: Number,
-    playtime_forever: Number,
-    img_icon_url: String,
-    playtime_windows_forever: Number,
-    playtime_mac_forever: Number,
-    playtime_linux_forever: Number,
-})
 
 const UserSchema = new mongoose.Schema({
   //Won't be using userName
