@@ -124,11 +124,11 @@ nav {
     border-radius: 1rem;
     box-shadow: 0 0 1rem #2a2a2a;
     color: #cccccc;
-    font-size: 1rem;
+    font-size: 1.75rem;
     text-decoration: none;
     font-weight: 300;
     padding: 1rem;
-    margin: 1rem;
+    margin: 2.5rem;
     transition: all 0.2s ease-in-out;
 }
 .logout-btn:hover {

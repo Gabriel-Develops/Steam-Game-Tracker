@@ -26,12 +26,12 @@ body {
 header{
     /* border: 2px solid black; */
     background: linear-gradient(to bottom, #222222, rgba(0,0,0,0));
-    letter-spacing: .3rem;
 }
 
 header h1{
     color: white;
     font-size: 3rem;
+    letter-spacing: .3rem;
     margin-top: .25rem;
     text-shadow: 2px 2px 5px #000000;
 }
