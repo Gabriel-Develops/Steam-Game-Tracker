@@ -40,7 +40,8 @@ module.exports = {
       try {
         // fetch req in here, can't normally fetch from the server so installed node-fetch pkg and required it in server.js and here in the steam controller
         // requesting the user's owned games in json format
-        const response = await fetch(`http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=${process.env.STEAM_API_KEY}&steamid=${req.user.steamID}&format=json`);
+        console.log("Requesting with Steam ID:", req.user.steamID)
+        const response = await fetch(`https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=${process.env.STEAM_API_KEY}&steamid=${req.user.steamID}&format=json`);
         const ownedGames = await response.json()
         const games = []
         // if there are games to add, pushing each appID to the games array

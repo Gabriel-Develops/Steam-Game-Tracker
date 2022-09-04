@@ -14,9 +14,9 @@ const mainRoutes = require('./routes/main')
 const todoRoutes = require('./routes/todos')
 const steamRoutes = require('./routes/steam')
 const fetch = require('node-fetch')
-require('dotenv').config({path: './config/.env'})
 
-// Passport config
+// Setup config
+require('dotenv').config({path: './config/.env'})
 require('./config/passport')(passport)
 require('./config/steamAuth')
 
@@ -40,19 +40,8 @@ app.use(
       saveUninitialized: false,
       store: new MongoStore({ mongooseConnection: mongoose.connection }),
     })
-  )
-  
-// Passport middleware
-app.use(passport.initialize())
-app.use(passport.session())
+)
 
-app.use(flash())
 
-// Main routes has all main routes
-app.use('/', mainRoutes)
-app.use('/steam', steamRoutes)
-app.use('/todos', todoRoutes)
- 
-app.listen(process.env.PORT, ()=>{
-    console.log('Server is running, you better catch it!')
-})    
+// ----------------------------------------
+startServer()
