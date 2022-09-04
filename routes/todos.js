@@ -18,10 +18,10 @@ router.get('/:steamID/:appID', ensureAuth, todosController.getTodos)
 
 router.post('/createTodo/:steamID/:appID', todosController.createTodo)
 
-router.put('/markComplete', todosController.markComplete)
+router.put('/:steamID/markComplete', todosController.markComplete)
 
-router.put('/markIncomplete', todosController.markIncomplete)
+router.put('/:steamID/markIncomplete', todosController.markIncomplete)
 
-router.delete('/deleteTodo', todosController.deleteTodo)
+router.delete('/:steamID/deleteTodo', todosController.deleteTodo)
 
 module.exports = router
