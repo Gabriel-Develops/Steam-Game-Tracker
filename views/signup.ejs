@@ -1,12 +1,11 @@
+<% if (locals.messages.errors) { %>
+    <% messages.errors.forEach( el => { %>
+        <div class="alert alert-danger"><%= el.msg %></div>
+    <% }) %>
+<% } %>
 
-    <% if (locals.messages.errors) { %>
-        <% messages.errors.forEach( el => { %>
-            <div class="alert alert-danger"><%= el.msg %></div>
-        <% }) %>    
-    <% } %>
 
-
-  <main class="signUpMain">
+<main class="signUpMain">
     <div class="signUpDiv">
         <form action="/signup" method="POST">
             <input type="email" name="email" placeholder="Email">
@@ -15,4 +14,4 @@
             <input type="submit" class="inputSubmit">
         </form>
     </div>
-  </main>
+</main>
