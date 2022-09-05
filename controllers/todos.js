@@ -45,6 +45,7 @@ module.exports = {
             const itemsLeft = await Todo.countDocuments({userId:req.user.id,completed: false, appId: req.params.appID})
             console.log('todoItems', todoItems, itemsLeft)
             res.render('todos.ejs', {
+                gameName: req.params.gameName,
                 todos: todoItems, 
                 left: itemsLeft, 
                 user: req.user, 
