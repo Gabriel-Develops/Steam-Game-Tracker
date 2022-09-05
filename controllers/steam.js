@@ -38,23 +38,24 @@ module.exports = {
         }
     },
 
-    //req.params = { steamID: < user steam ID here> }
-    //also having ensureAuth passes in the current user
-    async getGames(req, res) {
+    // req.params = { steamID: < user steam ID here> }
+    // also having ensureAuth passes in the current user
+    async getDashboard(req, res) {
         try {
-            let ownedGamesSorted = await steam.getSortedGames(req)
+            const ownedGames = await steam.getSortedGames(req)
             const playerIsPublic = await steam.getPlayerPublicStatus(req)
+
             console.log("🐟 Player is public?", playerIsPublic)
             // updating the user DB to reflect any updates
             await User.updateOne({"_id": req.user.id}, {
                 $set: {
-                    ownedGames: ownedGamesSorted,
+                    ownedGames: ownedGames,
                 }
             })
-
+            // This is where all the game data is served to the dashboard.
             res.render('dashboard.ejs', {
                 user: req.user,
-                games: ownedGamesSorted,
+                games: ownedGames,
                 playerIsPublic
             })
         } catch (err) {
