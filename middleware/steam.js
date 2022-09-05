@@ -33,12 +33,14 @@ module.exports = {
     //app id needs to be passed in with req
     async getGameAchievements(req, res) {
         //fetch game Schema from Steam Web API, which includes most stats
+        // console.log("App id passed in here?" + req)
         try {
-            const entireGameStatsResponse = await fetch(`https://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v2/?key=${process.env.STEAM_API_KEY}&appid=${req.appid}`)
+            const entireGameStatsResponse = await fetch(`https://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v2/?key=${process.env.STEAM_API_KEY}&appid=${req}`)
             const entireGameStats = await entireGameStatsResponse.json()
             let achievements = entireGameStats.game.availableGameStats.achievements
+            // console.log(achievements)
             if (achievements) {
-                return achievements.length
+                return achievements
             } else {
                 return 0
             }
@@ -55,10 +57,11 @@ module.exports = {
     //need to pass in appid, steamid with req
     async getUserGameAchievements(req, res) {
         //fetch game user stats from Steam Web API, which includes most stats
+        // console.log("request getusergameachievements" + req.appid + ' ' + req.steamid)
         try {
-            const userStatsForGameResponse = await fetch(`https://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v2/?key=${process.env.STEAM_API_KEY}&steamid=${steamid}&appid=${appid}`)
+            const userStatsForGameResponse = await fetch(`https://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v2/?key=${process.env.STEAM_API_KEY}&steamid=${req.steamid}&appid=${req.appid}`)
             const userStatsForGame = await userStatsForGameResponse.json();
-            // console.log(userStatsForGame)
+            // console.log(userStatsForGame.playerstats.achievements)
             if (userStatsForGame.playerstats && userStatsForGame.playerstats.achievements) {
                 return userStatsForGame.playerstats.achievements.length
             } else {

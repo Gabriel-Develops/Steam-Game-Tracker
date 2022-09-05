@@ -43,10 +43,13 @@
                 Some game icon hashes from Steam seem to be missing. ex: 3 were missing from 413 results.
                 In this case, we can just skip trying to attach those icons.
                 %>
-                <% if (game.img_icon_url) { %>
-                    <img src="<%= imgURL %>" alt="Game Icon" class="game-icon"/>
-                <% } %>
+
                 <a class='game-page-link' href='/todos/<%= user.steamID %>/<%= game.appid %>/<%= (game.name).split(' ').join('_')%>'>
+                    <div>
+                        <% if (game.img_icon_url) { %>
+                            <img src="<%= imgURL %>" alt="Game Icon" class="game-icon"/>
+                        <% } %>
+                    </div>
                     <%=game.name%>
                 </a>
                 <span class="hours-played">
