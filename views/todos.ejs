@@ -6,7 +6,10 @@
             </a>
         </h1>
 
-        <h2>Achievements: <%= userAchievements %> / <%= totalAchievements %></h2>
+        <h2>Achievements: 
+            <%= (userAchievements) ? userAchievements.length : 0 %> /
+            <%= (totalAchievements) ? totalAchievements.length : 0 %>
+        </h2>
 
         <h3>Todos</h3>
         <ul>
@@ -27,5 +30,28 @@
             <input type="submit" class="inputSubmit">
         </form>
     </div>
+
+    <h3>Achievements</h3>
+        <% if (totalAchievements) { %>}
+            <ul>
+                <% totalAchievements.forEach( el => { %>
+                    <li class='todoItem'>
+                        <img class="achievement-icon" src="<%= userAchievements.map(a => a.name).includes(el.name) ? el.icongray : el.icon %>" width="100px">
+                        <div class="achievement-info">
+                            <ul>
+                                <li>
+                                    <%= el.displayName %>
+                                </li>
+                                <li>
+                                    <%= !el.description ? "Achievement description blank"  :  el.description %>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                <% }) %>
+            </ul>
+        <% } else { %>
+            <h2>There are no achievements associated with this game.</h2>
+        <% } %>
 </main>
 <script src="/js/todos.js"></script>

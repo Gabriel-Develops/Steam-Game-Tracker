@@ -39,11 +39,7 @@ module.exports = {
             const entireGameStats = await entireGameStatsResponse.json()
             let achievements = entireGameStats.game.availableGameStats.achievements
             // console.log(achievements)
-            if (achievements) {
-                return achievements
-            } else {
-                return 0
-            }
+            return achievements
         } catch (err) {
             console.log(err)
         }
@@ -62,11 +58,7 @@ module.exports = {
             const userStatsForGameResponse = await fetch(`https://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v2/?key=${process.env.STEAM_API_KEY}&steamid=${req.steamid}&appid=${req.appid}`)
             const userStatsForGame = await userStatsForGameResponse.json();
             // console.log(userStatsForGame.playerstats.achievements)
-            if (userStatsForGame.playerstats && userStatsForGame.playerstats.achievements) {
-                return userStatsForGame.playerstats.achievements.length
-            } else {
-                return 0
-            }
+            return userStatsForGame.playerstats.achievements
         } catch (err) {
             console.log(err)
         }

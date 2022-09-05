@@ -250,6 +250,16 @@ footer h4{
     margin: 0 25% 0 25%;
 }
 
+/* ACHIEVEMENT STYLES */
+.achievement-icon {
+    float: left;
+}
+
+.achievement-info {
+    float: right;
+    padding-left: 1rem;
+}
+
 
 
 /* MEDIA QUERIES */
@@ -284,3 +294,7 @@ footer h4{
 .not{
     text-decoration: underline;
 } 
+
+.todoItem {
+    display: flex;
+}

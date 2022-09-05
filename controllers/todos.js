@@ -16,6 +16,7 @@ module.exports = {
             })
             const todoItems = await Todo.find({ userId:req.user._id , appId: appid})
             const itemsLeft = await Todo.countDocuments({ userId:req.user._id, completed: false, appId: appid })
+            // console.log(totalAchievements, userAchievements)
             // console.log('todoItems', todoItems, itemsLeft)
 
             res.render('todos.ejs', {
@@ -24,7 +25,7 @@ module.exports = {
                 left: itemsLeft, 
                 user: req.user, 
                 appID: appid,
-                totalAchievements: totalAchievements.length,
+                totalAchievements: totalAchievements,
                 userAchievements: userAchievements,
                 
             })
