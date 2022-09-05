@@ -58,7 +58,6 @@ li {
 }
 li:hover {
     border: 0.4rem solid goldenrod;
-    transform: translateY(-0.1rem);
 }
 
 nav {
@@ -82,18 +81,28 @@ nav {
     background: #141414;
     transform: translateY(0.1rem);
 }
-
+.steam-page-link-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 100%;
+}
 .steam-page-link {
     font-size: 1.5rem;
     color: goldenrod;
-    padding: 1rem 0;
     transition: all 0.2s ease-in-out;
     border-radius: 0.5rem;
+    padding: 1rem;
 }
 .steam-page-link:hover {
     color: #cb5870;
+    transform: translateY(-0.1rem);
     background: #141414;
-    transform: translateY(0.1rem);
+}
+.steam-logo {
+    width: 2rem;
+    height: 2rem;
 }
 .game-count {
     font-size: 1.5rem;
