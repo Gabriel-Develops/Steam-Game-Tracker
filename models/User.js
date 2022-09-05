@@ -2,6 +2,8 @@ const bcrypt = require('bcrypt')
 const mongoose = require('mongoose')
 
 // Embedded document for game info retrieved from Steam API
+// Todo lists could also be embedded for each game, since they are only ever accessed per user, per game.
+// This will take a lot of setup, however.
 const GameSchema = new mongoose.Schema({
     appid: Number,
     name: String,
