@@ -2,6 +2,11 @@
 const fetch = require('node-fetch')
 require('dotenv').config({path: './config/.env'})
 
+//      .getGames
+//      .getFriends
+//      .getAchievements
+//      .getStats
+
 module.exports = {
     getSortedGames: async (req, res) => {
         // fetch req in here, can't normally fetch from the server so installed node-fetch pkg and required it in server.js and here in the steam controller

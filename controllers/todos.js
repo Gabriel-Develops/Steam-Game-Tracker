@@ -35,7 +35,7 @@ module.exports = {
                 appId: req.params.appID
             })
             console.log('Todo has been added!')
-            res.redirect(`/todos/${req.user.steamID}/${req.params.appID}`)
+            res.redirect(`/todos/${req.user.steamID}/${req.params.appID}/${req.params.gameName}`)
         }catch(err){
             console.log(err)
         }

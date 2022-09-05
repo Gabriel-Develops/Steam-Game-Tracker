@@ -1,6 +1,6 @@
     <main class="dashboardMain">
         <div class="dashboardDiv1">
-        <h1><%= gameName.split('_').join(' ') %><h1/>
+        <h1><a href="https://store.steampowered.com/app/<%= appID %>" target="_blank"><%= gameName.split('_').join(' ') %></a><h1/>
         <h1>Achievements: <%= userAchievements %> / <%= totalAchievements %> <h1/>
         
             <h1>Todos</h1>
@@ -12,16 +12,17 @@
                         </li>
                     <% }) %>    
                 </ul>
-            <h2><%= user.userName %> has <%= left %> things left to do.</h2>
+            <h2><%= user.steamUserName %> has <%= left %> things left to do in <%= gameName.split('_').join(" ") %>.</h2>
         </div>
 
         <div class="dashboardDiv2">
-            <form action="/todos/createTodo/<%= user.steamID %>/<%= appID %>" method='POST'>
+            <form action="/todos/createTodo/<%= user.steamID %>/<%= appID %>/<%= gameName %>" method='POST'>
                 <input type="text" placeholder="Enter Todo Item" name='todoItem'>
                 <input type="submit" class="inputSubmit">
             </form>
 
         </div>
 
-        <script src="/js/todos.js"></script>
+        
     </main>
+<script src="/js/todos.js"></script>
