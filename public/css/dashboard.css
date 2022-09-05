@@ -115,27 +115,6 @@ nav {
     padding: 0.5rem 0;
 }
 
-.logout-btn {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: #222222;
-    border: 0.2rem solid #323232;
-    border-radius: 1rem;
-    box-shadow: 0 0 1rem #2a2a2a;
-    color: #cccccc;
-    font-size: 1.75rem;
-    text-decoration: none;
-    font-weight: 300;
-    padding: 1rem;
-    margin: 2.5rem;
-    transition: all 0.2s ease-in-out;
-}
-.logout-btn:hover {
-    background-color: goldenrod;
-    border: 0.2rem solid goldenrod;
-    color: #222222;
-}
 .error-section {
     display: flex;
     flex-direction: column;

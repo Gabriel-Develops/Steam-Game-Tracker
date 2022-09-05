@@ -1,17 +1,16 @@
-<% if (locals.messages.errors) { %>
-    <% messages.errors.forEach( el => { %>
-        <div class="alert alert-danger"><%= el.msg %></div>
-    <% }) %>
-<% } %>
-
-
-<main class="signUpMain">
-    <div class="signUpDiv">
-        <form action="/signup" method="POST">
-            <input type="email" name="email" placeholder="Email">
-            <input type="password" name="password" placeholder="Password">
-            <input type="password" name="confirmPassword" placeholder="Confirm Password">
-            <input type="submit" class="inputSubmit">
-        </form>
-    </div>
+<main>
+    <% if (locals.messages.errors) { %>
+        <% messages.errors.forEach( el => { %>
+            <div class="alert alert-danger"><%= el.msg %></div>
+        <% }) %>
+    <% } %>
+    <form action="/signup" method="POST" class="form signup">
+        <input type="email" name="email" placeholder="Email" class="input email">
+        <input type="password" name="password" placeholder="Password" class="input password">
+        <input type="password" name="confirmPassword" placeholder="Confirm Password" class="input confirm-password">
+        <input type="submit" class="btn submit" value="Sign Up">
+        <span class="auth-nav">
+            Already have an account? <a href="/login" class="link login">Login</a>
+        </span>
+    </form>
 </main>
