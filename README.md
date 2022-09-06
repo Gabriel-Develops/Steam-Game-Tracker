@@ -41,7 +41,16 @@ We've recently added:
 
 # Packages/Dependencies used 
 
-bcrypt, connect-mongo, dotenv, ejs, express, express-flash, express-session, mongodb, mongoose, morgan, nodemon, node-steam-openid, passport, passport-local, validator
+bcrypt, connect-mongo, dotenv, ejs, express, express-flash, express-session, mongodb, mongoose, morgan, nodemon, node-steam-openid, node-fetch, ejs-layouts, passport, passport-local, validator
+
+---
+
+# Optimizations
+
+- Streamline requests and make the steam middleware more modular
+- Create a game model that incorporates data from both User and Todo models
+- Clarify requests on routers - use PUT for requests that update the db
+- Log error messages to local and display in ejs errors partial
 
 ---
 
