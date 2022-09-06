@@ -44,7 +44,6 @@ module.exports = {
         try {
             const ownedGames = await steam.getSortedGames(req)
             const playerIsPublic = await steam.getPlayerPublicStatus(req)
-
             console.log("🐟 Player is public?", playerIsPublic)
             // updating the user DB to reflect any updates
             await User.updateOne({"_id": req.user.id}, {
@@ -57,6 +56,7 @@ module.exports = {
                 user: req.user,
                 games: ownedGames,
                 playerIsPublic
+                
             })
         } catch (err) {
             console.log(err)

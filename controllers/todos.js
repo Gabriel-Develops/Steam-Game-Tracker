@@ -14,20 +14,21 @@ module.exports = {
                 appid: appid,
                 steamid: steamid
             })
+            const gameInfo = await steam.getGameInfo(appid)
             const todoItems = await Todo.find({ userId:req.user._id , appId: appid})
             const itemsLeft = await Todo.countDocuments({ userId:req.user._id, completed: false, appId: appid })
             // console.log(totalAchievements, userAchievements)
             // console.log('todoItems', todoItems, itemsLeft)
 
             res.render('todos.ejs', {
-                gameName: gameName,
+                gameName: gameName.split("_").join(" "),
                 todos: todoItems, 
                 left: itemsLeft, 
                 user: req.user, 
                 appID: appid,
                 totalAchievements: totalAchievements,
                 userAchievements: userAchievements,
-                
+                gameInfo: gameInfo
             })
         }catch(err){
             console.log(err)
