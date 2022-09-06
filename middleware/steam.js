@@ -74,8 +74,10 @@ module.exports = {
     async getGameInfo(req, res) {
         //fetch game info without using a key, returns game data including screenshots and cover img
         try {
-            const gameInfoResponse = await fetch(`https://store.steampowered.com/api/appdetails?appids=${req.appid}`)
-            return await gameInfoResponse.json()
+            const gameInfoResponse = await fetch(`https://store.steampowered.com/api/appdetails?appids=${req}`)
+            const gameInfo = await gameInfoResponse.json()
+            // console.log(gameInfo[`${req}`])
+            return gameInfo[`${req}`]
         } catch (err) {
             console.log(err)
         }
