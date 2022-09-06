@@ -32,7 +32,7 @@ h2 {
 }
 
 /* Displays a grid of steam games */
-ul {
+.games-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -42,7 +42,7 @@ ul {
 }
 
 /* A square card showing information about a steam game */
-li {
+.games-list li{
     user-select: none;
     background-color:#202020;
     border: 0.4rem solid #323232;
@@ -56,7 +56,7 @@ li {
     height: min(100%, 400px);
     transition: all 0.2s ease-in-out;
 }
-li:hover {
+.games-list li:hover {
     border: 0.4rem solid goldenrod;
 }
 
@@ -116,6 +116,7 @@ nav {
     text-shadow: 0 0 3rem #ffe4bb;
 }
 .hours-played {
+    font-size: 1.75rem;
     padding: 0.5rem 0;
 }
 /* Align icon to top right of parent element*/

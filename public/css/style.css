@@ -213,6 +213,11 @@ footer h4{
 
 }
 
+.dashboardDiv1{
+    margin-bottom: 3rem;
+}
+
+
 .dashboardDiv1 h1{
     color: white;
     font-size: 3rem;
@@ -247,17 +252,49 @@ footer h4{
 }
 
 .dashboardDiv2{
-    margin: 0 25% 0 25%;
+    margin: 0 25%;
 }
 
 /* ACHIEVEMENT STYLES */
+
+.todos-list {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.todos-list > li{
+    display: flex;
+    justify-content: space-evenly;
+    user-select: none;
+    background-color:#202020;
+    border: 0.4rem solid #323232;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem #2a2a2a;
+    margin: 1rem;
+    padding: 1rem 3rem;
+    width: min(100%, 400px);
+    height: min(100%, 400px);
+    transition: all 0.2s ease-in-out;
+}
+.todos-list > li:hover {
+    border: 0.4rem solid goldenrod;
+}
+
 .achievement-icon {
-    float: left;
+    width: 100px;
 }
 
 .achievement-info {
-    float: right;
-    padding-left: 1rem;
+    flex-grow: 2;
+}
+
+.achievement-name {
+    font-weight: 700;
 }
 
 
@@ -295,9 +332,6 @@ footer h4{
     text-decoration: underline;
 } 
 
-.todoItem {
-    display: flex;
-}
 
 #contact-info li {
     background: none;

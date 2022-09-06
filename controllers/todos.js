@@ -17,7 +17,7 @@ module.exports = {
                 completed: false
             })
             const itemsLeft = todoItems.length
-
+            // console.log(totalAchievements, userAchievements)
             res.render('todos.ejs', {
                 gameName: gameName.split("_").join(" "),
                 todos: todoItems, 
