@@ -1,44 +1,52 @@
-# Introduction
+<h1 align="center"> The Game Tracker APP </h1>
+<h3 align="center"> Powered by Steam </h3>
+<h3 align="center"> <a href="https://game-tracker-100devs.herokuapp.com/"> Check it out! </a></h3>
 
-A Simple ToDo App is built using the MVC Architecture, we have also implemented "authorization" so folx can sign up, customize & personalize the app 
+<h3 align="left">About this project:</h3>
+<p align="left">
+This collaborative full-stack project was created for gamers, by gamers. The App was built using MVC architecture and provides authentication through the Steam Open ID library. Logging in will allow a user with a Steam account to view their entire game library on the dashboard and information about total hours played. Each game displayed in a user's dashboard can be clicked on which accesses a page showing a list of the possible achievements for the game and how many achievements have been completed. On this page, the user can enter and save their own list of "to-do's" which will be stored in a database allowing future reference (very helpful for achievement hunters!). The App relies on the Steam Web API and the user's unique Steam Id to populate the dashboard with games, achievements, and the associated icons and cover art. 
+</p>
 
----
+<h3 align="left">Quick facts about this project:</h3>
+<p align="left">
+<ul>
+<li> Front-end created using EJS, CSS, & JavaScript </li>
+<li> Hosted on Heroku </li>
+<li> Uses MongoDB  </li>
+</ul>
+</p>
 
-> Be sure to add that lovely star 😀 and fork it for your own copy
+<h3 align="left">Recent Updates:</h3>
+<p align="left">
+We've recently added:
+<ul>
+<li> Dynamic CSS styling </li>
+<li> Images for games and achievements </li>
+<!----- <li> </li> ---->
+</ul>
+</p>
 
----
 
 # Objectives
 
-- It's a beginner level app created to understand how MVC concept and logins are added
+- A conveinent way to access and view the obtainable acheivements of each game in your Steam library
 
 ---
 
 # Who is this for? 
 
-- It's for beginners & intermediates with little more experience, to help understand the various aspects of building a node app with some complex features
+- Gamers and Achievement hunters!
 
 ---
 
 # Packages/Dependencies used 
 
-bcrypt, connect-mongo, dotenv, ejs, express, express-flash, express-session, mongodb, mongoose, morgan, nodemon, passport, passport-local, validator
+bcrypt, connect-mongo, dotenv, ejs, express, express-flash, express-session, mongodb, mongoose, morgan, nodemon, node-steam-openid, passport, passport-local, validator
 
 ---
 
-# Install all the dependencies or node packages used for development via Terminal
-
-`npm install` 
-
----
-
-# Things to add
-
-- Create a `.env` file and add the following as `key: value` 
-  - PORT: 2121 (can be any port example: 3000) 
-  - DB_STRING: `your database URI` 
- ---
- 
- Have fun testing and improving it! 😎
+<h3 align="left">Languages and Tools Used to Create this Project:</h3>
+<p align="left"> <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/> </a> <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/> </a> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a> <a href="https://nodejs.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="40" height="40"/> </a>  <a href="https://expressjs.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg" alt="express" width="40" height="40"/> </a> <a href="https://www.mongodb.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg" alt="mongodb" width="40" height="40"/> </a></p>
 
 
+<h3 align="left">Thanks for stopping by!</h3>
