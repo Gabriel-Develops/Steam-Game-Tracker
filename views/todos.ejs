@@ -39,7 +39,7 @@
                 <ul class="todos-list">
                     <% totalAchievements.forEach( el => { %>
                         <li class='todoItem'>
-                            <img class="achievement-icon" src="<%= !userAchievements ? el.icon : userAchievements.map(a => a.name).includes(el.name) ? el.icongray : el.icon %>">
+                            <img class="achievement-icon" src="<%= !userAchievements ? el.icongray : userAchievements.map(a => a.name).includes(el.name) ? el.icon : el.icongray %>">
                             <div>
                                 <ul class="achievement-info">
                                     <li class="achievement-name">
