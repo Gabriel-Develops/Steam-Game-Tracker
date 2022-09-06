@@ -37,9 +37,7 @@ module.exports = {
         try {
             const entireGameStatsResponse = await fetch(`https://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v2/?key=${process.env.STEAM_API_KEY}&appid=${req}`)
             const entireGameStats = await entireGameStatsResponse.json()
-            let achievements = entireGameStats.game.availableGameStats.achievements
-            // console.log(achievements)
-            return achievements
+            return entireGameStats.game.availableGameStats.achievements
         } catch (err) {
             console.log(err)
         }
@@ -55,7 +53,7 @@ module.exports = {
         //fetch game user stats from Steam Web API, which includes most stats
         // console.log("request getusergameachievements" + req.appid + ' ' + req.steamid)
         try {
-            const userStatsForGameResponse = await fetch(`https://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v2/?key=${process.env.STEAM_API_KEY}&steamid=${req.steamid}&appid=${req.appid}`)
+            const userStatsForGameResponse = await fetch(`https://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v2/?key=${process.env.STEAM_API_KEY}&steamid=${req.params.steamID}&appid=${req.params.appID}`)
             const userStatsForGame = await userStatsForGameResponse.json();
             // console.log(userStatsForGame.playerstats.achievements)
             return userStatsForGame.playerstats.achievements
