@@ -3,16 +3,19 @@ const steam = require('../middleware/steam')
 
 module.exports = {
     async getTodos(req,res) {
-        // console.log('es',req.user)
         const steamid = req.params.steamID
         const appid = req.params.appID
         const gameName = req.params.gameName.split("_").join(" ")
-        try{
+        try {
             // Finding the todo's for the specific user ID
             const totalAchievements = await steam.getGameAchievements(appid)
             const userAchievements = await steam.getUserGameAchievements(req, res)
             const gameInfo = await steam.getGameInfo(appid)
-            const todoItems = await Todo.find({ userId: req.user._id, appId: appid, completed: false})
+            const todoItems = await Todo.find({
+                userId: req.user._id,
+                appId: appid,
+                completed: false
+            })
             const itemsLeft = todoItems.length
 
             res.render('todos.ejs', {
