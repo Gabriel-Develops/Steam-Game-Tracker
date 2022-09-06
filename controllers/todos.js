@@ -13,8 +13,8 @@ module.exports = {
             const gameInfo = await steam.getGameInfo(appid)
             const todoItems = await Todo.find({
                 userId: req.user._id,
-                appId: appid,
-                completed: false
+                appId: appid
+                // completed: false
             })
             const itemsLeft = todoItems.length
             // console.log(totalAchievements, userAchievements)

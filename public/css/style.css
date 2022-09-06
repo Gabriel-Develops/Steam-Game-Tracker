@@ -19,6 +19,23 @@ body {
     text-align: center;
     height: 100vh;
     line-height: 1.15;
+    background-color: #333333;
+    font-family: 'Open Sans', sans-serif;
+    color: #cccccc;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    user-select: none;
+    font-weight: 300;
+    padding: 1rem;
+}
+h2 {
+    user-select: none;
+    font-size: 1.5rem;
+    font-weight: 300;
+    padding: 1rem;
 }
 
 
@@ -26,6 +43,10 @@ body {
 header{
     /* border: 2px solid black; */
     background: linear-gradient(to bottom, #222222, rgba(0,0,0,0));
+    padding: 3rem;
+    color: #cccccc;
+    font-size: 20px;
+    font-weight: 300;
 }
 
 header h1{
@@ -263,6 +284,149 @@ footer h4{
     margin: 0 25%;
 }
 
+.dashboard-headers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* Displays a grid of steam games */
+.games-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* A square card showing information about a steam game */
+.games-list li{
+    user-select: none;
+    background-color:#202020;
+    border: 0.4rem solid #323232;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem #2a2a2a;
+    margin: 1rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: min(100%, 400px);
+    height: min(100%, 400px);
+    transition: all 0.2s ease-in-out;
+}
+.games-list li:hover {
+    border: 0.4rem solid goldenrod;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.game-page-link {
+    text-decoration-style: dotted;
+    color: goldenrod;
+    padding: 1rem 0;
+    transition: all 0.2s ease-in-out;
+    border-radius: 0.5rem;
+}
+.game-page-link:hover {
+    color: #20c9a4;
+    background: #141414;
+    transform: translateY(-0.1rem);
+}
+.steam-page-link-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 100%;
+}
+.steam-page-link {
+    font-size: 1.5rem;
+    color: goldenrod;
+    transition: all 0.2s ease-in-out;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+.steam-page-link:hover {
+    color: #cb5870;
+    transform: translateY(-0.1rem);
+    background: #141414;
+}
+.steam-logo {
+    width: 2rem;
+    height: 2rem;
+}
+.game-count {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: goldenrod;
+    text-shadow: 0 0 2rem #e3cd84;
+    transition: all 0.2s ease-in-out;
+}
+.game-count:hover {
+    color: #ffc424;
+    text-shadow: 0 0 3rem #ffe4bb;
+}
+.hours-played {
+    font-size: 1.75rem;
+    padding: 0.5rem 0;
+}
+/* Align icon to top right of parent element*/
+.game-icon {
+    align-self: center;
+    padding: 0.5rem 0;
+}
+
+.error-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    transition: all 0.7s ease-in-out;
+}
+.error {
+    background-color:#c91a38;
+    color: #cccccc;
+    width: 100%;
+    padding: 2rem 0;
+    transition: all 0.7s ease-in-out;
+}
+.error > * {
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+.error a {
+    color: #20c9a4;
+    text-decoration-style: dotted;
+    transition: all 0.2s ease-in-out;
+    padding: 0 0.3rem;
+    border-radius: 0.2rem;
+}
+.error a:hover {
+    color: #ffffff;
+    transform: translateY(0.2rem);
+}
+.error-section.hidden,
+.error-section.hidden .error {
+    opacity: 0;
+    height: 0;
+    padding: 0;
+}
+
 /* ACHIEVEMENT STYLES */
 
 .todos-list {
@@ -337,9 +501,6 @@ footer h4{
     text-decoration: line-through;
     color: gray;
 }
-.not{
-    text-decoration: underline;
-} 
 
 
 #contact-info li {
