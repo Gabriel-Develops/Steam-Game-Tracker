@@ -2,7 +2,7 @@ const Todo = require('../models/Todo')
 const steam = require('../middleware/steam')
 
 module.exports = {
-    getTodos: async (req,res) => {
+    async getTodos(req,res) {
         // console.log('es',req.user)
         const steamid = req.params.steamID
         const appid = req.params.appID
@@ -29,7 +29,7 @@ module.exports = {
             console.log(err)
         }
     },
-    createTodo: async (req, res)=>{
+    async createTodo(req, res) {
         console.log(req.params)
         try{
             await Todo.create({
@@ -45,7 +45,7 @@ module.exports = {
             console.log(err)
         }
     },
-    markComplete: async (req, res)=>{
+    async markComplete(req, res) {
         try{
             await Todo.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{
                 completed: true
@@ -56,7 +56,7 @@ module.exports = {
             console.log(err)
         }
     },
-    markIncomplete: async (req, res)=>{
+    async markIncomplete(req, res) {
         try{
             await Todo.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{
                 completed: false
@@ -67,7 +67,7 @@ module.exports = {
             console.log(err)
         }
     },
-    deleteTodo: async (req, res)=>{
+    async deleteTodo(req, res) {
         console.log(req.body.todoIdFromJSFile)
         try{
             await Todo.findOneAndDelete({_id:req.body.todoIdFromJSFile})
