@@ -32,7 +32,7 @@ module.exports = {
             // updates the user with steamID, owned games, etc
             console.log('Successfully updated user')
             //redirect to dashboard
-            res.redirect(`/steam/${req.user.steamID}`)
+            res.redirect(`/steam/${user.steamid}`)
         } catch (error) {
             console.log(error);
         }
