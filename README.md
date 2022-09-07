@@ -1,6 +1,9 @@
-<h1 align="center"> The Game Tracker APP </h1>
+<h1 align="center"> The Game Tracker App </h1>
 <h3 align="center"> Powered by Steam </h3>
 <h3 align="center"> <a href="https://game-tracker-100devs.herokuapp.com/"> Check it out! </a></h3>
+
+<h3 align="left"> Contributers:</h3> 
+<a href="https://github.com/moonlighter-dev">Dana Arroway</a>, <a href="https://github.com/Arikabz">Arturo Guevara</a>, <a href="https://github.com/7MinutesDead-Git">Alex Gulikers</a>, <a href="https://github.com/d-herz">Daniel Hyres</a>, <a href="https://github.com/Gabriel-Develops">Gabriel Rodriguez</a>, and <a href="https://github.com/jamilsinno">Jamil Sinno</a>
 
 <h3 align="left">About this project:</h3>
 <p align="left">
@@ -11,14 +14,14 @@ This collaborative full-stack project was created for gamers, by gamers. The App
 <p align="left">
 <ul>
 <li> Front-end created using EJS, CSS, & JavaScript </li>
+<li> Back-end built with Node/Express </li>
+<li> Database on MongoDB  </li>
 <li> Hosted on Heroku </li>
-<li> Uses MongoDB  </li>
 </ul>
 </p>
 
 <h3 align="left">Recent Updates:</h3>
 <p align="left">
-We've recently added:
 <ul>
 <li> Dynamic CSS styling </li>
 <li> Images for games and achievements </li>
