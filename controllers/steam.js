@@ -21,7 +21,7 @@ module.exports = {
         console.log(req.params)
         try {
             const user = await steamAuth.authenticate(req);
-            console.log('User: ', user)
+            console.log(user)
             // Updates user in db with steamId and steamUsername
             await User.updateOne({"_id": req.user.id}, {
                 $set: {
@@ -32,7 +32,7 @@ module.exports = {
             // updates the user with steamID, owned games, etc
             console.log('Successfully updated user')
             //redirect to dashboard
-            res.redirect(`/steam/${user.steamid}`)
+            res.redirect(`/steam/${req.user.steamID}`)
         } catch (error) {
             console.log(error);
         }
