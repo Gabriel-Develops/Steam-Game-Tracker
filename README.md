@@ -30,6 +30,10 @@ This collaborative full-stack project was created for gamers, by gamers. The App
 </p>
 
 
+![](https://github.com/d-herz/todo-mvc-auth-local/blob/main/game-tracker.gif)
+
+
+
 # Objectives
 
 - A conveinent way to access and view the obtainable acheivements of each game in your Steam library
