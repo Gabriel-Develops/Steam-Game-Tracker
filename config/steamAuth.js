@@ -9,8 +9,8 @@ if (!process.env.STEAM_API_KEY) {
 
 // NEED TO ADD HTTPS IN PROD
 const steam = new SteamAuth({
-  realm: `http://localhost:${process.env.PORT}/`, // Site name displayed to users on logon
-  returnUrl: `http://localhost:${process.env.PORT}/steam/updateUser/`, // Your return route NEED TO ADD HTTPS IN PRODUCTION
+  realm: 'https://steam-game-tracker.herokuapp.com/', // Site name displayed to users on logon
+  returnUrl: `https://steam-game-tracker.herokuapp.com/steam/updateUser/`, // Your return route NEED TO ADD HTTPS IN PRODUCTION
   apiKey: process.env.STEAM_API_KEY // Steam API key
 });
 
